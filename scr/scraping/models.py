@@ -1,4 +1,5 @@
 from django.db import models
+from .utils import from_cirillic_to_lat
 
 # Create your models here.
 class City(models.Model):
@@ -13,6 +14,12 @@ class City(models.Model):
     def __str__(self):
         return self.name
 
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = from_cirillic_to_lat(str(self.name))
+        super().save(*args, **kwargs)
+
+
 
 class Language(models.Model):
     name = models.CharField(max_length=25,
@@ -25,3 +32,7 @@ class Language(models.Model):
 
     def __str__(self):
         return self.name
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = from_cirillic_to_lat(str(self.name))
+        super().save(*args, **kwargs)

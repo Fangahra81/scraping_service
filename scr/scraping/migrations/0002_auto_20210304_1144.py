@@ -24,7 +24,8 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterModelOptions(
             name='city',
-            options={'verbose_name': 'Название населенного пункта', 'verbose_name_plural': 'Названия населенных пунктов'},
+            options={'verbose_name': 'Название населенного пункта',
+                     'verbose_name_plural': 'Названия населенных пунктов'},
         ),
         migrations.AlterField(
             model_name='city',
