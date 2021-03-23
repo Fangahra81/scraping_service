@@ -4,4 +4,6 @@ from .models import Vacancy, Language
 def home_view (request):
     qs = Vacancy.objects.all()
     lg = Language.objects.all()
-    return render(request, 'home.html', {'object_list': qs},{'object_lis2': lg})
+
+    return render(request, 'scraping/home.html', {'object_list': qs})
+
